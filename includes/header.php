@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,18 +43,33 @@ https://templatemo.com/tm-556-catalog-z
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+
                     <li class="nav-item">
-                        <a class="nav-link nav-link-1 active" aria-current="page" href="index.php">Photos</a>
+                        <a class="nav-link nav-link-1 active" aria-current="page" href="index.php">Home</a>
                     </li>
+
+                    <?php if(isset($_SESSION['username'])) : ?>
+
                     <li class="nav-item">
                         <a class="nav-link nav-link-2" href="create.php">create</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-2" href="">User: <?php echo $_SESSION['username']; ?></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-2" href="logout.php">logout</a>
+                    </li>
+
+                    <?php else: ?>
+
                     <li class="nav-item">
                         <a class="nav-link nav-link-3" href="register.php">register</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link nav-link-4" href="login.php">login</a>
                     </li>
+                    <?php endif; ?>
+
                 </ul>
             </div>
         </div>
